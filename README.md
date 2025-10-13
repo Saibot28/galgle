@@ -9,6 +9,12 @@ A simple hangman implementation inside of python.
 
 ## Requirements:
 
-- pyfiglet
-  markdown
-- pwinput
+pyfiglet:
+```
+pip install pyfiglet
+```
+
+pwinput:
+```
+pip install pwinput
+```
