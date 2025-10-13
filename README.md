@@ -5,7 +5,7 @@
 
 ---
 
-A simple hangman implementation inside of python.
+A simple hangman implementation inside of Python, featuring an ASCII representation of the poor stickman.
 
 ## Requirements:
 
