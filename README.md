@@ -18,3 +18,8 @@ pwinput:
 ```
 pip install pwinput
 ```
+
+random-word:
+```
+pip install random-word
+```
