@@ -26,6 +26,7 @@ while correct == False:                                 # Main game loop
     wrong_guess = True
     duplicate_letter = False
     invalid_guess = False
+    guess = guess.lower()
 
     if guess in allGuesses:         # Checks if the user input has been guessed before and
         duplicate_letter = True     # sets a boolean flag accordingly
