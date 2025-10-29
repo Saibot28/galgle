@@ -2,6 +2,8 @@ import pyfiglet
 import os
 from random_word import RandomWords
 
+os.system("cls" if os.name == "nt" else "clear")
+
 r = RandomWords()
 word = ""
 while len(word) < 4:
@@ -23,12 +25,14 @@ while correct == False:                                 # Main game loop
     os.system('cls' if os.name == 'nt' else 'clear')    # clears screen
     wrong_guess = True
     duplicate_letter = False
-    invalid_length = False
+    invalid_guess = False
 
     if guess in allGuesses:         # Checks if the user input has been guessed before and
-        duplicate_letter = True         # sets a boolean flag accordingly
+        duplicate_letter = True     # sets a boolean flag accordingly
     elif len(guess) != 1:
-        invalid_length = True
+        invalid_guess = True
+    elif not guess.isalpha():
+        invalid_guess = True
     else:
 
         for position in range(0, wordlength):
@@ -68,8 +72,8 @@ while correct == False:                                 # Main game loop
     print("Guessed letters: "+", ".join(map(str, guessedLetters)))
     if duplicate_letter == True:
         print("You've guessed that before!")
-    if invalid_length == True:
-        print("Please guess one letter.")
+    if invalid_guess == True:
+        print("Please guess a single letter.")
     print("")
 
 # Checks win/lose conditions
