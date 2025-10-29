@@ -2,7 +2,14 @@ import pyfiglet
 import os
 import pwinput
 
+os.system("cls" if os.name == "nt" else "clear")
+
 word = pwinput.pwinput("Enter the word: ").lower()  # Listens for user input and makes it lowercase
+while not word.isalpha():
+    os.system("cls" if os.name == "nt" else "clear")
+    print("Letters only!")
+    word = pwinput.pwinput("Enter the word: ").lower()
+
 os.system("cls" if os.name == "nt" else "clear")    # Clears screen; "cls" if it's windows, otherwise "clear"
 wordlength = len(word)
 dotline = "_" * wordlength      # Makes a line for the letters to be filled in
@@ -20,12 +27,15 @@ while correct == False:                                 # Main game loop
     os.system('cls' if os.name == 'nt' else 'clear')    # clears screen
     wrong_guess = True
     duplicate_letter = False
-    invalid_length = False
+    invalid_guess = False
+    guess = guess.lower()
 
     if guess in allGuesses:         # Checks if the user input has been guessed before and
-        duplicate_letter = True         # sets a boolean flag accordingly
+        duplicate_letter = True     # sets a boolean flag accordingly
     elif len(guess) != 1:
-        invalid_length = True
+        invalid_guess = True
+    elif not guess.isalpha():
+        invalid_guess = True
     else:
 
         for position in range(0, wordlength):
@@ -65,8 +75,8 @@ while correct == False:                                 # Main game loop
     print("Guessed letters: "+", ".join(map(str, guessedLetters)))
     if duplicate_letter == True:
         print("You've guessed that before!")
-    if invalid_length == True:
-        print("Please guess one letter.")
+    if invalid_guess == True:
+        print("Please guess a single letter.")
     print("")
 
 # Checks win/lose conditions
